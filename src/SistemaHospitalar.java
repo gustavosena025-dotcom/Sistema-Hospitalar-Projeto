@@ -42,8 +42,28 @@ public class SistemaHospitalar {
     }
 
     public void buscarPaciente(){
+       Scanner sc = new Scanner(System.in);
+       String pesquisa;
+        boolean procura = true;
+
+
         System.out.println("Buscando pacientes");
-    }
+       System.out.println("Digite o nome do paciente que edeseja verificar");
+       pesquisa = sc.nextLine();
+       System.out.println("Verificando se " + pesquisa + "existe");
+
+       for (int i =0; i < pacientes.size();i++){
+           Cadastro c = pacientes.get(i);
+           if(pesquisa.equals(c.getNome())){
+               System.out.println("Encontrado \n Nome: \t" +c.getNome() + " \n Idade: \t"+ c.getIdade() + "\n CPF: \t " + c.getCpf());
+               procura = false;
+
+           }
+       }
+        if(procura == true) {
+            System.out.println( pesquisa +" Não esta no sistema");
+        }
+   }
 
     public void deletarPaciente(){
         Cadastro c = new Cadastro();
